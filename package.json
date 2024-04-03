@@ -1,0 +1,28 @@
+{
+  "name": "vue3-next",
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "module",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "yjpyang <1510586926@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "execa": "^8.0.1",
+    "rollup": "^4.13.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "typescript": "^5.4.3",
+    "minimist": "^1.2.8"
+
+  }
+}
