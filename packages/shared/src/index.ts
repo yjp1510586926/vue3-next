@@ -24,3 +24,5 @@ export const isIntegerKey=(key:any)=>{
 }
 
 export const hasOwn=(target:any,key:string)=>Object.prototype.hasOwnProperty.call(target,key)
+
+export const hasChanged=(value:any,oldValue:any)=>value!==oldValue

@@ -7,7 +7,7 @@ import options from '../../../rollup.config';
  * @Autor: yjp
  * @Date: 2024-04-03 18:24:36
  * @LastEditors: yjp
- * @LastEditTime: 2024-04-03 22:12:13
+ * @LastEditTime: 2024-04-05 10:11:00
  * @FilePath: /vue3-next/packages/reactivity/src/effect.ts
  */
 export const effect = (fn,options:any={}) => {
@@ -67,12 +67,10 @@ export const Track = (target, type, key) => {
 }
 
 export const trigger = (target, type, key, value, oldValue?) => {
-  debugger
   let depMap = targetMap.get(target)
   if(!depMap){
     return
   }
-  let deps = depMap.get(key)
   let effects = new Set()
   const add=(effectsToAdd)=>{
     if(effectsToAdd){
@@ -82,8 +80,7 @@ export const trigger = (target, type, key, value, oldValue?) => {
     }
   }
   if(key==='length'&&isArray(target)){
-    debugger
-    deps.forEach((dep)=>{
+    depMap.forEach((dep)=>{
       if(dep.key==='length'||dep.key>=value){
         add(dep)
       }
@@ -91,12 +88,12 @@ export const trigger = (target, type, key, value, oldValue?) => {
   }
   else{
     if(key!==undefined){
-      add(deps.get(key))
+      add(depMap.get(key))
     }
     switch(type){
       case TriggerOpTypes.ADD:
         if(isArray(target)&&isIntegerKey(key)){
-          add(deps.get('length'))
+          add(depMap.get('length'))
         }
     }
   }

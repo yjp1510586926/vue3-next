@@ -1,0 +1,33 @@
+<!--
+ * @Description:
+ * @Autor: yjp
+ * @Date: 2024-04-03 10:23:07
+ * @LastEditors: yjp
+ * @LastEditTime: 2024-04-05 10:06:52
+ * @FilePath: /vue3-next/examples/ref.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../packages/reactivity/dist/reactivity.global.js"></script>
+<script>
+  const { ref,effect } = VueReactivity;
+  let person = ref('www')
+
+   effect(()=>{
+     console.log(person.value)
+   })
+
+
+  setTimeout(()=>{
+    person.value = "888"
+  },1000)
+</script>
+<body>
+
+</body>
+</html>

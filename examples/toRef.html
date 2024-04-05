@@ -1,0 +1,28 @@
+<!--
+ * @Description:
+ * @Autor: yjp
+ * @Date: 2024-04-03 10:23:07
+ * @LastEditors: yjp
+ * @LastEditTime: 2024-04-05 10:38:59
+ * @FilePath: /vue3-next/examples/toRef.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../packages/reactivity/dist/reactivity.global.js"></script>
+<script>
+  const { ref,effect,toRef } = VueReactivity;
+  const obj = {name:'王五'}
+  const temp = toRef(obj,'name')
+  console.log(temp)
+
+
+</script>
+<body>
+
+</body>
+</html>
