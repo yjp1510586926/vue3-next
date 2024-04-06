@@ -1,0 +1,33 @@
+<!--
+ * @Description:
+ * @Autor: yjp
+ * @Date: 2024-04-03 10:23:07
+ * @LastEditors: yjp
+ * @LastEditTime: 2024-04-05 11:29:30
+ * @FilePath: /vue3-next/examples/computed.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../packages/reactivity/dist/reactivity.global.js"></script>
+<script>
+  const { reactive,ref,effect,toRefs ,computed} = VueReactivity;
+  const obj = reactive({name:'王五'})
+
+ const temp=  computed(()=>{
+    return `${obj.name}333`
+  })
+  console.log(temp.value)
+  obj.name = "888"
+  console.log(temp.value)
+
+
+</script>
+<body>
+
+</body>
+</html>

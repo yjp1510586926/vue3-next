@@ -7,7 +7,7 @@ import options from '../../../rollup.config';
  * @Autor: yjp
  * @Date: 2024-04-03 18:24:36
  * @LastEditors: yjp
- * @LastEditTime: 2024-04-05 10:11:00
+ * @LastEditTime: 2024-04-05 11:27:59
  * @FilePath: /vue3-next/packages/reactivity/src/effect.ts
  */
 export const effect = (fn,options:any={}) => {
@@ -29,7 +29,7 @@ const createReactiveEffect = (fn,options) => {
       try{
         effectStack.push(effect)
         activeEffect=effect
-        fn()
+      return  fn()
       }finally{
         effectStack.pop()
         activeEffect=effectStack[effectStack.length-1]
@@ -97,7 +97,13 @@ export const trigger = (target, type, key, value, oldValue?) => {
         }
     }
   }
-  effects.forEach((effect:any)=>{ effect() }
+  effects.forEach((effect:any)=>{
+    if(effect.options.scheduler){
+      effect.options.scheduler(effect)
+    }else{
+      effect()
+    }
+    }
   )
 
 }
